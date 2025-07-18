@@ -1,15 +1,25 @@
 <?php
-$host = 'db';
-$db   = 'erp';
-$user = 'erpuser';
-$pass = 'senha123';
-$charset = 'utf8mb4';
-
-$dsn = "mysql:host=$host;dbname=$db;charset=$charset";
-
+require __DIR__ . '/../config/database.php';
+$config = require __DIR__ . '/../config/database.php';
+$dsn = "mysql:host={$config['host']};dbname={$config['dbname']};charset={$config['charset']}";
 try {
-    $pdo = new PDO($dsn, $user, $pass);
-    echo "✅ Conexão com MySQL bem-sucedida!";
+    new PDO($dsn, $config['user'], $config['pass']);
+    $msg = '✅ Conexão com MySQL bem-sucedida!';
 } catch (PDOException $e) {
-    echo "❌ Erro ao conectar: " . $e->getMessage();
+    $msg = '❌ Erro ao conectar: ' . $e->getMessage();
 }
+?>
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<title>Mini ERP</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css">
+</head>
+<body class="container py-4">
+<h1>Mini ERP</h1>
+<p><?= $msg ?></p>
+<a href="produtos.php" class="btn btn-primary">Gerenciar Produtos</a>
+<a href="carrinho.php" class="btn btn-secondary">Ver Carrinho</a>
+</body>
+</html>

@@ -1,0 +1,8 @@
+<?php
+return [
+    'host' => 'db',
+    'dbname' => 'erp',
+    'user' => 'erpuser',
+    'pass' => 'senha123',
+    'charset' => 'utf8mb4'
+];
