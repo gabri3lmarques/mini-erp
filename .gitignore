@@ -1,0 +1,25 @@
+# Ignore arquivos e pastas do sistema
+*.DS_Store
+*.log
+*.bak
+*.swp
+
+# Ignore arquivos de configuração sensíveis
+.env
+config/database.php
+
+# Ignore pastas do Docker
+docker/data/
+docker/mysql/
+
+# Ignore pastas de cache
+vendor/
+node_modules/
+*.cache
+
+# Ignore arquivos do Composer (caso use)
+composer.lock
+
+# Ignore pastas de build
+/public/css/
+/public/js/
