@@ -5,7 +5,7 @@ $dsn = "mysql:host={$config['host']};dbname={$config['dbname']};charset={$config
 $pdo = new PDO($dsn, $config['user'], $config['pass']);
 
 function produto($pdo, $id){
-    $stmt = $pdo->prepare('SELECT p.*, e.quantidade FROM produtos p JOIN estoque e ON e.produto_id=p.id WHERE p.id=?');
+    $stmt = $pdo->prepare('SELECT p.*, e.quantidade, e.variacao FROM produtos p JOIN estoque e ON e.produto_id=p.id WHERE p.id=?');
     $stmt->execute([$id]);
     return $stmt->fetch(PDO::FETCH_ASSOC);
 }
